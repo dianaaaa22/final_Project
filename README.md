@@ -1,3 +1,3 @@
 # final_Project
-Name of project:
-Project made by Diana
+Name of project: 
+    Project made by Diana
