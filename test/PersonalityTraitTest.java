@@ -2,23 +2,30 @@ package test;
 
 import src.PersonalityTrait;
 
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
-
+/**
+ * Simple test class for PersonalityTrait.
+ * Run this file to see test results.
+ */
 public class PersonalityTraitTest {
 
-    @Test
-    public void addScoreWorks() {
-        PersonalityTrait trait = new PersonalityTrait();
-        trait.addScore("A", 1);                 // ✅ correct Java
-        assertEquals(1, trait.getScores().get("A"));
-    }
+    public static void main(String[] args) {
 
-    @Test
-    public void topTypeWorks() {
         PersonalityTrait trait = new PersonalityTrait();
-        trait.addScore("B", 3);
+
+        // Test addScore
         trait.addScore("A", 1);
-        assertEquals("B", trait.getTopType());
+        if (trait.getScores().get("A") == 1) {
+            System.out.println("addScore test PASSED");
+        } else {
+            System.out.println("addScore test FAILED");
+        }
+
+        // Test getTopType
+        trait.addScore("B", 3);
+        if ("B".equals(trait.getTopType())) {
+            System.out.println("getTopType test PASSED");
+        } else {
+            System.out.println("getTopType test FAILED");
+        }
     }
 }

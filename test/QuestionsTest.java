@@ -1,27 +1,26 @@
 package test;
 
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Test;
-
 import src.Questions;
 
 /**
- * Beginner tests for Questions
+ * Simple test class for Questions.
  */
 public class QuestionsTest {
 
-    // Test that questions exist
-    @Test
-    public void questionsExist() {
-        Questions q = new Questions();
-        assertTrue(q.size() > 0);
-    }
+    public static void main(String[] args) {
 
-    // Test that the first question has text
-    @Test
-    public void questionTextExists() {
         Questions q = new Questions();
-        assertNotNull(q.getQuestionText(0));
+
+        if (q.size() > 0) {
+            System.out.println("Question count test PASSED");
+        } else {
+            System.out.println("Question count test FAILED");
+        }
+
+        if (q.getQuestionText(0) != null) {
+            System.out.println("Question text test PASSED");
+        } else {
+            System.out.println("Question text test FAILED");
+        }
     }
 }
-

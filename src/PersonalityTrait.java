@@ -3,69 +3,82 @@ package src;
 import java.util.HashMap;
 
 /**
- * Stores personality scores AND descriptions.
- * Uses HashMaps (ADT).
+ * Stores personality scores and provides results.
  */
 public class PersonalityTrait {
 
-    // Stores scores for each personality type
     private HashMap<String, Integer> scores;
-
-    // Stores descriptions for each personality type
     private HashMap<String, String> descriptions;
+    private HashMap<String, String> jobs;
+    private HashMap<String, String> hobbies;
 
-    /**
-     * Initializes scores and descriptions.
-     */
     public PersonalityTrait() {
         scores = new HashMap<>();
         descriptions = new HashMap<>();
+        jobs = new HashMap<>();
+        hobbies = new HashMap<>();
 
-        // Initialize personality types
+        // Initialize scores
         scores.put("A", 0);
         scores.put("B", 0);
         scores.put("C", 0);
-        scores.put("D", 0);
 
-        descriptions.put("A", "You are calm, organized, and reliable.");
-        descriptions.put("B", "You are social, energetic, and outgoing.");
-        descriptions.put("C", "You are creative, expressive, and imaginative.");
-        descriptions.put("D", "You are analytical, thoughtful, and reserved.");
+        // Personality descriptions
+        descriptions.put("A",
+                "The Anchor: Calm, steady, reliable, and level-headed.");
+        descriptions.put("B",
+                "The Balancer: Flexible, adaptable, and goes with the flow.");
+        descriptions.put("C",
+                "The Entertainer: Energetic, outgoing, and expressive.");
+
+        // Recommended jobs
+        jobs.put("A",
+                "Engineer, Therapist, Project Manager");
+        jobs.put("B",
+                "Consultant, Teacher, Human Resources");
+        jobs.put("C",
+                "Actor, Marketing Specialist, Event Planner");
+
+        // Recommended hobbies
+        hobbies.put("A",
+                "Reading, journaling, yoga");
+        hobbies.put("B",
+                "Traveling, photography, volunteering");
+        hobbies.put("C",
+                "Dancing, team sports, content creation");
     }
 
-    /**
-     * Adds points to a personality trait.
-     */
+    // Adds points to a personality type
     public void addScore(String type, int value) {
         scores.put(type, scores.get(type) + value);
     }
 
-    /**
-     * Returns the personality type with the highest score.
-     */
+    // Returns the personality type with the highest score
     public String getTopType() {
         String bestType = null;
-        int maxScore = -1;
+        int highestScore = -1;
 
-        for (String key : scores.keySet()) {
-            if (scores.get(key) > maxScore) {
-                maxScore = scores.get(key);
-                bestType = key;
+        for (String type : scores.keySet()) {
+            if (scores.get(type) > highestScore) {
+                highestScore = scores.get(type);
+                bestType = type;
             }
         }
         return bestType;
     }
 
-    /**
-     * Returns description for a personality type.
-     */
     public String getDescription(String type) {
-        return descriptions.getOrDefault(type, "No description available.");
+        return descriptions.get(type);
     }
 
-    /**
-     * Returns all personality scores.
-     */
+    public String getJobs(String type) {
+        return jobs.get(type);
+    }
+
+    public String getHobbies(String type) {
+        return hobbies.get(type);
+    }
+
     public HashMap<String, Integer> getScores() {
         return scores;
     }

@@ -3,30 +3,25 @@ package src;
 import java.util.ArrayList;
 
 /**
- * Manages quiz questions using ArrayList.
+ * Stores all questions and answer choices for the personality test.
  */
 public class Questions {
 
-    /**
-     * Inner Question class (no separate file needed)
-     */
-    private static class Question {
-        String text;
-        String[] choices;
-        String traitKey;
-
-        Question(String text, String[] choices, String traitKey) {
-            this.text = text;
-            this.choices = choices;
-            this.traitKey = traitKey;
-        }
-    }
-
-    private ArrayList<Question> questions;
+    private ArrayList<String> questions;
+    private ArrayList<String[]> choices;
 
     public Questions() {
         questions = new ArrayList<>();
+        choices = new ArrayList<>();
 
+        // Add 5 questions
+        questions.add("I consider myself a calm person in stressful situations.");
+        questions.add("I enjoy spending time in large groups of people.");
+        questions.add("I prefer staying indoors rather than going outside.");
+        questions.add("I like to plan things rather than be spontaneous.");
+        questions.add("I consider myself a creative person.");
+
+        // Same answer choices for all questions
         String[] scale = {
             "Strongly Disagree",
             "Disagree",
@@ -35,32 +30,24 @@ public class Questions {
             "Strongly Agree"
         };
 
-        questions.add(new Question(
-            "I consider myself a calm person in stressful situations",
-            scale,
-            "A"
-        ));
-
-        questions.add(new Question(
-            "I enjoy spending time in large groups of people",
-            scale,
-            "B"
-        ));
+        // Add choices for each question
+        for (int i = 0; i < questions.size(); i++) {
+            choices.add(scale);
+        }
     }
 
+    // Returns total number of questions
     public int size() {
         return questions.size();
     }
 
+    // Returns question text at index
     public String getQuestionText(int index) {
-        return questions.get(index).text;
+        return questions.get(index);
     }
 
+    // Returns answer choices for question at index
     public String[] getChoices(int index) {
-        return questions.get(index).choices;
-    }
-
-    public String getTraitKey(int index) {
-        return questions.get(index).traitKey;
+        return choices.get(index);
     }
 }
