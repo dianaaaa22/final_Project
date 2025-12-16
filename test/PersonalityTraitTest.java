@@ -1,26 +1,21 @@
 package test;
 
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Test;
-
 import src.PersonalityTrait;
 
-/**
- * Beginner tests for PersonalityTrait
- */
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
 public class PersonalityTraitTest {
 
-    // Test that adding a score actually changes the value
     @Test
     public void addScoreWorks() {
         PersonalityTrait trait = new PersonalityTrait();
-        trait.addScore("A", 1);
+        trait.addScore("A", 1);                 // ✅ correct Java
         assertEquals(1, trait.getScores().get("A"));
     }
 
-    // Test that the highest score is returned correctly
     @Test
-    public void topTypeIsCorrect() {
+    public void topTypeWorks() {
         PersonalityTrait trait = new PersonalityTrait();
         trait.addScore("B", 3);
         trait.addScore("A", 1);
