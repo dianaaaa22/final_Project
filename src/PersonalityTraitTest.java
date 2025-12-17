@@ -1,6 +1,4 @@
-package test;
-
-import src.PersonalityTrait;
+package src;
 
 /**
  * Simple test class for PersonalityTrait.

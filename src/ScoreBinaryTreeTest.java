@@ -1,6 +1,4 @@
-package test;
-
-import src.ScoreBinaryTree;
+package src;
 
 /**
  * Simple test class for ScoreBinaryTree.
