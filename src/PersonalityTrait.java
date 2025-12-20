@@ -1,16 +1,13 @@
-package src;
 
 import java.util.HashMap;
 
-/**
- * Stores personality scores and provides results.
- */
 public class PersonalityTrait {
 
-    private HashMap<String, Integer> scores;
-    private HashMap<String, String> descriptions;
-    private HashMap<String, String> jobs;
-    private HashMap<String, String> hobbies;
+    private final HashMap<String, Integer> scores;
+    private final HashMap<String, String> descriptions;
+    private final HashMap<String, String> jobs;
+    private final HashMap<String, String> hobbies;
+
 
     public PersonalityTrait() {
         scores = new HashMap<>();
@@ -25,27 +22,33 @@ public class PersonalityTrait {
 
         // Personality descriptions
         descriptions.put("A",
-                "The Anchor: Calm, steady, reliable, and level-headed.");
+                "The Anchor: Calm, dependable, and emotionally steady. Anchors thrive in structured environments and are known for their reliability, patience, and ability to remain composed under pressure.");
+
         descriptions.put("B",
-                "The Balancer: Flexible, adaptable, and goes with the flow.");
+                "The Balancer: Adaptable, open-minded, and easygoing. Balancers value harmony, adjust well to change, and often act as mediators who help maintain balance in groups.");
+
         descriptions.put("C",
-                "The Entertainer: Energetic, outgoing, and expressive.");
+                "The Entertainer: Energetic, expressive, and socially confident. Entertainers enjoy engaging with others, bringing enthusiasm to situations, and expressing creativity.");
 
         // Recommended jobs
         jobs.put("A",
-                "Engineer, Therapist, Project Manager");
+                "Engineer, Project Manager, Counselor, Healthcare Professional");
+
         jobs.put("B",
-                "Consultant, Teacher, Human Resources");
+                "Teacher, Human Resources Specialist, Consultant, Social Worker");
+
         jobs.put("C",
-                "Actor, Marketing Specialist, Event Planner");
+                "Actor, Marketing Specialist, Content Creator, Event Planner");
 
         // Recommended hobbies
         hobbies.put("A",
-                "Reading, journaling, yoga");
+                "Reading, journaling, yoga, mindfulness activities");
+
         hobbies.put("B",
-                "Traveling, photography, volunteering");
+                "Traveling, photography, volunteering, exploring new interests");
+
         hobbies.put("C",
-                "Dancing, team sports, content creation");
+                "Dancing, performing arts, team sports, social media creation");
     }
 
     // Adds points to a personality type

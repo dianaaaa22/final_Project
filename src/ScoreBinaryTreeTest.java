@@ -1,22 +1,17 @@
-package src;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
-/**
- * Simple test class for ScoreBinaryTree.
- */
 public class ScoreBinaryTreeTest {
 
-    public static void main(String[] args) {
-
+    @Test
+    public void testInsertAndTraversalSize() {
         ScoreBinaryTree tree = new ScoreBinaryTree();
 
         tree.insert("A", 2);
         tree.insert("B", 5);
         tree.insert("C", 1);
 
-        if (tree.inOrderTraversal().size() == 3) {
-            System.out.println("Tree insert test PASSED");
-        } else {
-            System.out.println("Tree insert test FAILED");
-        }
+        // Verify the tree contains 3 elements
+        assertEquals(3, tree.inOrderTraversal().size());
     }
 }

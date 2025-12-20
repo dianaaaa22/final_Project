@@ -1,77 +1,64 @@
-package src;
-
 import java.util.Scanner;
 
-/**
- * Main driver class for the 07Personality Test.
- * Asks 5 questions and determines a personality type.
- */
 public class PersonalityTest {
 
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
+        try (Scanner scanner = new Scanner(System.in)) {
 
-        Questions questions = new Questions();
-        PersonalityTrait trait = new PersonalityTrait();
+            Questions questions = new Questions();
+            PersonalityTrait trait = new PersonalityTrait();
 
-        System.out.println();
-        System.out.println("Welcome to the 07Personality Test! :");
-        System.out.println("Answer each question with a number from 1 to 5.");
-        System.out.println("1 = Strongly Disagree");
-        System.out.println("5 = Strongly Agree\n");
+            System.out.println();
+            System.out.println("Welcome to the Personality Test!");
+            System.out.println("Answer each question with a number from 1 to 5.");
+            System.out.println("1 = Strongly Disagree");
+            System.out.println("5 = Strongly Agree\n");
 
-        // Ask ALL 5 questions
-        for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < questions.size(); i++) {
 
-            System.out.println("Question " + (i + 1) + ":");
-            System.out.println(questions.getQuestionText(i));
+                System.out.println("Question " + (i + 1) + ":");
+                System.out.println(questions.getQuestionText(i));
 
-            String[] choices = questions.getChoices(i);
-            for (int j = 0; j < choices.length; j++) {
-                System.out.println((j + 1) + ". " + choices[j]);
+                String[] choices = questions.getChoices(i);
+                for (int j = 0; j < choices.length; j++) {
+                    System.out.println((j + 1) + ". " + choices[j]);
+                }
+
+                int answer = getValidAnswer(scanner);
+
+                // Get personality type & weight for this question
+                char type = questions.getType(i);
+                int weight = questions.getWeight(i);
+
+                // Stronger agreement = more points
+                int points = answer * weight;
+
+                trait.addScore(String.valueOf(type), points);
+
+                System.out.println();
             }
 
-            int answer = getValidAnswer(scanner);
+            // Display results
+            System.out.println("RESULTS:");
+            String topType = trait.getTopType();
 
-            // Scoring logic for 3 personality types
-            if (answer >= 4) {
-                trait.addScore("A", 1);   // Agree / Strongly Agree
-            } else if (answer == 3) {
-                trait.addScore("B", 1);   // Neutral
-            } else {
-                trait.addScore("C", 1);   // Disagree / Strongly Disagree
-            }
+            System.out.println("\nYour personality type:");
+            System.out.println(trait.getDescription(topType));
 
-            System.out.println(); // spacing between questions
+            System.out.println("\nRecommended Careers:");
+            System.out.println(trait.getJobs(topType));
+
+            System.out.println("\nRecommended Hobbies:");
+            System.out.println(trait.getHobbies(topType));
         }
-
-        // Display result AFTER all questions
-        System.out.println("RESULTS:");
-
-        String topType = trait.getTopType();
-
-        System.out.println("Your personality type: ");
-        System.out.println(trait.getDescription(topType));
-
-        System.out.println("\nRecommended Careers:");
-        System.out.println(trait.getJobs(topType));
-
-        System.out.println("\nRecommended Hobbies:");
-        System.out.println(trait.getHobbies(topType));
-
-
-        scanner.close();
     }
 
-    /**
-     * Safely gets a valid number between 1 and 5 from the user.
-     */
     private static int getValidAnswer(Scanner scanner) {
         int answer = 0;
 
         while (answer < 1 || answer > 5) {
-            System.out.print("Enter your answer (1-5): ");
+            System.out.print("Enter your answer (1–5): ");
             String input = scanner.nextLine();
 
             try {

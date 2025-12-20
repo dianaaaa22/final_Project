@@ -1,29 +1,25 @@
-package src;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
-/**
- * Simple test class for PersonalityTrait.
- * Run this file to see test results.
- */
 public class PersonalityTraitTest {
 
-    public static void main(String[] args) {
-
+    @Test
+    public void testAddScore() {
         PersonalityTrait trait = new PersonalityTrait();
 
-        // Test addScore
         trait.addScore("A", 1);
-        if (trait.getScores().get("A") == 1) {
-            System.out.println("addScore test PASSED");
-        } else {
-            System.out.println("addScore test FAILED");
-        }
 
-        // Test getTopType
+        assertEquals(1, trait.getScores().get("A"));
+    }
+
+    @Test
+    public void testGetTopType() {
+        PersonalityTrait trait = new PersonalityTrait();
+
+        trait.addScore("A", 1);
         trait.addScore("B", 3);
-        if ("B".equals(trait.getTopType())) {
-            System.out.println("getTopType test PASSED");
-        } else {
-            System.out.println("getTopType test FAILED");
-        }
+
+        assertEquals("B", trait.getTopType());
     }
 }
+

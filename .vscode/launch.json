@@ -8,6 +8,13 @@
             "type": "java",
             "name": "PersonalityTest",
             "request": "launch",
+            "mainClass": "PersonalityTest",
+            "projectName": "final_Project_28f70122"
+        },
+        {
+            "type": "java",
+            "name": "PersonalityTest",
+            "request": "launch",
             "mainClass": "src.PersonalityTest",
             "projectName": "final_Project_28f70122"
         },
